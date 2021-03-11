@@ -5,17 +5,11 @@
  */
 package com.ifam.ss.evasao.Models;
 
-import java.io.Serializable;
-import javax.persistence.*;
 /**
  *
  * @author luizf
  */
+public class Formulario {
 
-@Entity
-@Table(name="departamento")
-public class Departamento implements Serializable{
-         @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+        
 }

@@ -5,10 +5,21 @@
  */
 package com.ifam.ss.evasao.Models;
 
+import java.io.Serializable;
+import javax.persistence.*;
+
 /**
  *
  * @author luizf
  */
-public class Aluno {
-    
+
+@Entity
+@Table(name="aluno")
+public class Aluno implements Serializable{
+     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+     
+     @Column(table = "nome", columnDefinition = "String")
+     private String nome;
 }

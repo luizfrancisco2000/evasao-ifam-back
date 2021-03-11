@@ -5,10 +5,18 @@
  */
 package com.ifam.ss.evasao.Models;
 
+import java.io.Serializable;
+import javax.persistence.*;
+
 /**
  *
  * @author luizf
  */
-public class Campus {
+@Entity
+@Table(name="campus")
+public class Campus implements Serializable{
+         @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     
 }

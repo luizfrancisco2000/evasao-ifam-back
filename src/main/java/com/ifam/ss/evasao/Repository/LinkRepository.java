@@ -3,19 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ifam.ss.evasao.Models;
+package com.ifam.ss.evasao.Repository;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import com.ifam.ss.evasao.Models.Link;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author luizf
  */
-@Entity
-@Table(name="link")
-public class Link implements Serializable{
+public interface LinkRepository extends JpaRepository<Link,Long>{
     //Classe de Permissão de acesso a links administrativos
-     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 }

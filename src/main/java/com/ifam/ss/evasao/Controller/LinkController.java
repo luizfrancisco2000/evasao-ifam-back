@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ifam.ss.evasao.Models;
+package com.ifam.ss.evasao.Controller;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 /**
  *
  * @author luizf
  */
-@Entity
-@Table(name="link")
-public class Link implements Serializable{
+@RestController
+@RequestMapping("/api")
+public class LinkController{
     //Classe de Permissão de acesso a links administrativos
-     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 }
