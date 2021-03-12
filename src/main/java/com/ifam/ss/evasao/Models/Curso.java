@@ -15,9 +15,9 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name="departamento")
-public class Departamento implements Serializable{
-    @Id
+@Table(name="curso")
+public class Curso implements Serializable{
+        @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
@@ -29,12 +29,12 @@ public class Departamento implements Serializable{
     
     @JsonIgnore
     @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn( name = "campus", nullable = false)
-    private Campus campus;
+    @JoinColumn( name = "departamento", nullable = false)
+    private Departamento departamento;
     
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "departamento")
-    private List<Curso> cursos;
+     @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "curso")
+    private List<Aluno> alunos;
 
     public Long getId() {
         return id;
@@ -60,21 +60,21 @@ public class Departamento implements Serializable{
         this.sigla = sigla;
     }
 
-    public Campus getCampus() {
-        return campus;
+    public Departamento getDepartamento() {
+        return departamento;
     }
 
-    public void setCampus(Campus campus) {
-        this.campus = campus;
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 
-    public List<Curso> getCursos() {
-        return cursos;
+    public List<Aluno> getAlunos() {
+        return alunos;
     }
 
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
     }
-    
-    
+     
+     
 }

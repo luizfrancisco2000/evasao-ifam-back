@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ifam.ss.evasao.Repository;
-
-
-import com.ifam.ss.evasao.Models.Aluno;
-import org.springframework.data.jpa.repository.JpaRepository;
+package com.ifam.ss.evasao.Models.FormBuilder;
 
 /**
  *
  * @author luizf
  */
-public interface AlunoRepository extends JpaRepository<Aluno,Long>{
+public class Topico {
     
 }
