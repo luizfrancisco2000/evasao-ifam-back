@@ -44,4 +44,11 @@ public class AlunoController {
         alunoAux = Aluno.setDadosUpdate(alunoAux);
         return new ResponseEntity<>(alunoRepository.save(alunoAux), HttpStatus.OK);
     }
+    
+    @RequestMapping(method = RequestMethod.DELETE, path = "/aluno")
+    public ResponseEntity<?> deleteAluno(@RequestBody Aluno aluno) {
+        Aluno alunoAux = alunoRepository.findById(aluno.getId()).get();
+        alunoRepository.delete(alunoAux);
+        return new ResponseEntity<>("Deletado com sucesso", HttpStatus.OK);
+    }
 }

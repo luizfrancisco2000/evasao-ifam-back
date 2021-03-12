@@ -5,41 +5,51 @@
  */
 package com.ifam.ss.evasao.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.*;
+
 /**
  *
  * @author luizf
  */
 @Entity
-@Table(name="usuario")
-public class Usuario implements Serializable{
+@Table(name = "usuario")
+public class Usuario implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Column(name = "usuario", nullable = false, length = 30, unique = true)
     private String usuario;
 
     @Column(name = "senha", nullable = false, length = 30)
     private String senha;
-        
+
     @Column(name = "nome", nullable = false, length = 60)
     private String nome;
     /**
-     * Para definir o tipo de acesso
-     * Reitoria
-     * Diretoria
-     * Chefe departamento
-     * Assistente Social
+     * Apenas por questão esteética Para definir o tipo de acesso Reitoria
+     * Diretoria Chefe departamento Assistente Social
      */
     @Column(name = "tipo", nullable = false, length = 1)
     private char tipo;
-    
+
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "campus", nullable = false)
+    private Campus campus;
+
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "departamento", nullable = false)
+    private Departamento departamento;
+
     /**
      * Matricula do servidor federal
      */
-    @Column(name="siape", nullable = false, unique = true)
+    @Column(name = "siape", nullable = false, unique = true)
     private Long siape;
 
     public Long getId() {
@@ -89,7 +99,34 @@ public class Usuario implements Serializable{
     public void setSiape(Long siape) {
         this.siape = siape;
     }
+
+    public Campus getCampus() {
+        return campus;
+    }
+
+    public void setCampus(Campus campus) {
+        this.campus = campus;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
     
-    
-    
+    public static Usuario setDadosUpdate(Usuario usuario) {
+        Usuario usuarioAux = new Usuario();
+        usuarioAux.setNome(usuario.getNome());
+        usuarioAux.setSenha(usuario.getSenha());
+        usuarioAux.setSiape(usuario.getSiape());
+        usuarioAux.setTipo(usuario.getTipo());
+        usuarioAux.setUsuario(usuario.getUsuario());
+        usuarioAux.setCampus(usuario.getCampus());
+        usuarioAux.setDepartamento(usuario.getDepartamento());
+        return usuarioAux;
+    }
+
 }

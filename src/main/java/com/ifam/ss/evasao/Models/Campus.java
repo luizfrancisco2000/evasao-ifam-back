@@ -31,6 +31,11 @@ public class Campus implements Serializable{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "campus")
     private List<Departamento> departamentos;
 
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "campus")
+    private List<Usuario> usuarios;
+        
+
     public Long getId() {
         return id;
     }
@@ -62,6 +67,23 @@ public class Campus implements Serializable{
     public void setDepartamentos(List<Departamento> departamentos) {
         this.departamentos = departamentos;
     }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
     
     
+    public static Campus setDadosUpdate(Campus campus){
+        Campus campusAux = new Campus();
+        campusAux.setDepartamentos(campus.getDepartamentos());
+        campusAux.setNome(campus.getNome());
+        campusAux.setSigla(campus.getSigla());
+        campusAux.setUsuarios(campus.getUsuarios());
+        return campusAux;
+    }
 }
